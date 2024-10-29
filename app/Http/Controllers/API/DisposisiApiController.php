@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class DisposisiApiController extends Controller
 {
-    //
+    public function show($suratId)
+    {
+        dd($suratId);
+    }
 }
