@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterApiController;
 use App\Http\Controllers\API\LoginApiController;
 use App\Http\Controllers\API\DashboardController;
-use App\Http\Controllers\API\DisposisiApiController;
 use App\Http\Controllers\API\SuratMasukController;
 use App\Http\Controllers\API\ProfileApiController;
+use App\Http\Controllers\Api\DisposisiApiController;
 
 /*
 |---------------------------------------------------------------------------
@@ -54,4 +54,9 @@ Route::put('profiles/{userId}', [ProfileApiController::class, 'update']); // Mem
 Route::delete('profiles/{userId}', [ProfileApiController::class, 'destroy']); // Menghapus profil
 // });
 
-Route::get('disposisis/{id}', [DisposisiApiController::class, 'show']); // Untuk mendapatkan surat masuk berdasarkan ID
+
+Route::get('disposisis', [DisposisiApiController::class, 'index']);          // Mendapatkan semua disposisi
+Route::get('disposisis/{id}', [DisposisiApiController::class, 'show']);       // Mendapatkan disposisi berdasarkan ID
+Route::post('disposisis', [DisposisiApiController::class, 'store']);          // Menambahkan disposisi baru
+Route::post('disposisis/{id}', [DisposisiApiController::class, 'update']);    // Memperbarui disposisi berdasarkan ID
+Route::delete('disposisis/{id}', [DisposisiApiController::class, 'destroy']); // Menghapus disposisi berdasarkan ID
