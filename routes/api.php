@@ -35,11 +35,11 @@ Route::post('register', [RegisterApiController::class, 'store']);
 
 
 Route::apiResource('surat_masuks', SuratMasukController::class);
-Route::get('surat_masuks', [SuratMasukController::class, 'index']); // Untuk mendapatkan semua surat masuk
-Route::get('surat_masuks/{id}', [SuratMasukController::class, 'show']); // Untuk mendapatkan surat masuk berdasarkan ID
-Route::post('surat_masuks', [SuratMasukController::class, 'store']); // Untuk menambah surat masuk
-Route::post('surat_masuks/{id}', [SuratMasukController::class, 'update']); // Untuk memperbarui surat masuk
-Route::delete('surat_masuks/{id}', [SuratMasukController::class, 'destroy']); // Untuk menghapus surat masuk
+Route::get('surat_masuks', [SuratMasukController::class, 'index']);             // Untuk mendapatkan semua surat masuk
+Route::get('surat_masuks/{id}', [SuratMasukController::class, 'show']);         // Untuk mendapatkan surat masuk berdasarkan ID
+Route::post('surat_masuks', [SuratMasukController::class, 'store']);            // Untuk menambah surat masuk
+Route::post('surat_masuks/{id}', [SuratMasukController::class, 'update']);      // Untuk memperbarui surat masuk
+Route::delete('surat_masuks/{id}', [SuratMasukController::class, 'destroy']);   // Untuk menghapus surat masuk
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -47,16 +47,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route untuk profile API
 // Route::middleware('auth:sanctum')->group(function () {
-Route::get('profiles', [ProfileApiController::class, 'index']); // Mendapatkan semua profil
-Route::get('profiles/{userId}', [ProfileApiController::class, 'show']); // Mendapatkan profil berdasarkan user ID
-Route::post('profiles', [ProfileApiController::class, 'store']); // Menambah profil baru
-Route::put('profiles/{userId}', [ProfileApiController::class, 'update']); // Memperbarui profil
-Route::delete('profiles/{userId}', [ProfileApiController::class, 'destroy']); // Menghapus profil
+Route::get('profiles', [ProfileApiController::class, 'index']);                 // Mendapatkan semua profil
+Route::get('profiles/{userId}', [ProfileApiController::class, 'show']);         // Mendapatkan profil berdasarkan user ID
+Route::post('profiles', [ProfileApiController::class, 'store']);                // Menambah profil baru
+Route::put('profiles/{userId}', [ProfileApiController::class, 'update']);       // Memperbarui profil
+Route::delete('profiles/{userId}', [ProfileApiController::class, 'destroy']);   // Menghapus profil
 // });
 
 
-Route::get('disposisis', [DisposisiApiController::class, 'index']);          // Mendapatkan semua disposisi
-Route::get('disposisis/{id}', [DisposisiApiController::class, 'show']);       // Mendapatkan disposisi berdasarkan ID
-Route::post('disposisis', [DisposisiApiController::class, 'store']);          // Menambahkan disposisi baru
-Route::post('disposisis/{id}', [DisposisiApiController::class, 'update']);    // Memperbarui disposisi berdasarkan ID
-Route::delete('disposisis/{id}', [DisposisiApiController::class, 'destroy']); // Menghapus disposisi berdasarkan ID
+Route::get('disposisis', [DisposisiApiController::class, 'index']);             // Mendapatkan semua disposisi
+Route::get('disposisis/{id}', [DisposisiApiController::class, 'show']);         // Mendapatkan disposisi berdasarkan ID
+Route::post('disposisis', [DisposisiApiController::class, 'store']);            // Menambahkan disposisi baru
+Route::post('disposisis/{id}', [DisposisiApiController::class, 'update']);      // Memperbarui disposisi berdasarkan ID
+Route::delete('disposisis/{id}', [DisposisiApiController::class, 'destroy']);   // Menghapus disposisi berdasarkan ID
