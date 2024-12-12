@@ -64,4 +64,3 @@ Route::get('disposisis/{id}', [DisposisiApiController::class, 'show']);         
 Route::post('disposisis', [DisposisiApiController::class, 'store']);            // Menambahkan disposisi baru
 Route::post('disposisis/{id}', [DisposisiApiController::class, 'update']);      // Memperbarui disposisi berdasarkan ID
 Route::delete('disposisis/{id}', [DisposisiApiController::class, 'destroy']);   // Menghapus disposisi berdasarkan ID
-// Route::post('disposisis/simpan_status', [DisposisiApiController::class, 'SimpanStatus']);
