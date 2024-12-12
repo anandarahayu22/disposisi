@@ -41,7 +41,7 @@ class SuratMasukController extends Controller
             'file_surat' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
         ]);
 
-        $filename = null; // Default null jika tidak ada file diunggah
+        $filename = null;
 
         // Mengunggah file jika ada
         if ($request->hasFile('file_surat')) {
@@ -162,5 +162,23 @@ class SuratMasukController extends Controller
         $suratMasuk->delete();
 
         return response()->json(['message' => 'Surat berhasil dihapus'], 200);
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $surat = SuratMasuk::find($id);
+        if ($surat) {
+            $surat->status = $request->input('status', 2); // Default status ke 2 jika tidak ada input
+            $surat->save();
+
+            return response()->json([
+                'message' => 'Status surat berhasil diperbarui',
+                'data' => $surat
+            ], 200);
+        }
+
+        return response()->json([
+            'message' => 'Surat tidak ditemukan'
+        ], 404);
     }
 }

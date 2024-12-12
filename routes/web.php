@@ -19,8 +19,8 @@ use App\Http\Controllers\API\DashboardController;
 route::get('/', DashboardController::class);
 
 
-route::get('register', [RegisterController::class, 'create'])->name('register');
-route::post('register', [RegisterController::class, 'store'])->name('register');
+// route::get('register', [RegisterController::class, 'create'])->name('register');
+// route::post('register', [RegisterController::class, 'store'])->name('register');
 
-route::get('login', [LoginController::class, 'create'])->name('login');
-route::post('login', [LoginController::class, 'store'])->name('login');
+// route::get('login', [LoginController::class, 'create'])->name('login');
+// route::post('login', [LoginController::class, 'store'])->name('login');
