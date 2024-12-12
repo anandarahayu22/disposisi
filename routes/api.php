@@ -40,6 +40,10 @@ Route::get('surat_masuks/{id}', [SuratMasukController::class, 'show']);         
 Route::post('surat_masuks', [SuratMasukController::class, 'store']);            // Untuk menambah surat masuk
 Route::post('surat_masuks/{id}', [SuratMasukController::class, 'update']);      // Untuk memperbarui surat masuk
 Route::delete('surat_masuks/{id}', [SuratMasukController::class, 'destroy']);   // Untuk menghapus surat masuk
+Route::patch('/surat_masuks/{id}', [SuratMasukController::class, 'updateStatus']);
+
+// Route::post('/surat_masuks/simpan_status', [SuratMasukController::class, 'simpanStatus']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -60,3 +64,4 @@ Route::get('disposisis/{id}', [DisposisiApiController::class, 'show']);         
 Route::post('disposisis', [DisposisiApiController::class, 'store']);            // Menambahkan disposisi baru
 Route::post('disposisis/{id}', [DisposisiApiController::class, 'update']);      // Memperbarui disposisi berdasarkan ID
 Route::delete('disposisis/{id}', [DisposisiApiController::class, 'destroy']);   // Menghapus disposisi berdasarkan ID
+// Route::post('disposisis/simpan_status', [DisposisiApiController::class, 'SimpanStatus']);

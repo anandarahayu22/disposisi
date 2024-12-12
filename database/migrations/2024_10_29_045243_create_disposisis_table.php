@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('pengirim_id');
             $table->string('penerima_id');
             $table->text('disposisi');
-            $table->text('Keterangan')->nullable();
+            $table->text('keterangan')->nullable();
             $table->string('status');
             $table->dateTime('tgl_verifikasi');
             $table->string('Read')->default(0);

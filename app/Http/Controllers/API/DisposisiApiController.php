@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Disposisi;
+use App\Models\SuratMasuk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -34,7 +35,7 @@ class DisposisiApiController extends Controller
             'disposisi' => 'required|string',
             'status' => 'required|string',
             'tgl_verifikasi' => 'required|date',
-            'Read' => 'nullable|boolean',
+            'read' => 'nullable|boolean',
         ]);
 
         if ($validator->fails()) {
@@ -42,6 +43,19 @@ class DisposisiApiController extends Controller
         }
 
         $disposisi = Disposisi::create($request->all());
+
+        $id_surat = intval($request->surat_id);
+        $surat_masuks = SuratMasuk::where('id', $id_surat)->first();
+
+        // Periksa apakah surat masuk ditemukan, lalu perbarui kolom disposisi dan status
+        if ($surat_masuks) {
+            $surat_masuks->disposisi = "fill";
+            $surat_masuks->status = 1;
+            $surat_masuks->save();
+        } else {
+            // Jika surat masuk tidak ditemukan, beri tahu dengan pesan
+            return response()->json(['message' => 'SuratMasuk not found'], 404);
+        }
         return response()->json($disposisi, 201);
     }
 
@@ -60,7 +74,7 @@ class DisposisiApiController extends Controller
             'disposisi' => 'sometimes|string',
             'status' => 'sometimes|string',
             'tgl_verifikasi' => 'sometimes|date',
-            'Read' => 'nullable|boolean',
+            'read' => 'nullable|boolean', // Ubah 'Read' menjadi 'read'
         ]);
 
         if ($validator->fails()) {
@@ -76,6 +90,17 @@ class DisposisiApiController extends Controller
         $disposisi = Disposisi::find($id);
 
         if ($disposisi) {
+            // Dapatkan surat yang terkait
+            $surat_masuks = SuratMasuk::where('id', $disposisi->surat_id)->first();
+
+            // Jika surat masuk ditemukan, ubah kolom 'disposisi' menjadi null
+            if ($surat_masuks) {
+                $surat_masuks->disposisi = null;
+                $surat_masuks->status = 0;
+                $surat_masuks->save();
+            }
+
+            // Hapus disposisi
             $disposisi->delete();
             return response()->json(['message' => 'Disposisi deleted successfully']);
         } else {

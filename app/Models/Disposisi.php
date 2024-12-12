@@ -16,7 +16,7 @@ class Disposisi extends Model
         'pengirim_id',
         'penerima_id',
         'disposisi',
-        'Keterangan',
+        'keterangan',
         'status',
         'tgl_verifikasi',
         'Read',

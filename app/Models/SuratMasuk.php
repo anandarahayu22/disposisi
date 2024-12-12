@@ -24,7 +24,10 @@ class SuratMasuk extends Model
         'status',
         'deskripsi',
         'file_surat',
+        'disposisi'
     ];
+
+
 
     // Accessor untuk mendapatkan URL file_surat
     public function getFileSuratUrlAttribute()
